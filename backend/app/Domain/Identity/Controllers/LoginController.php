@@ -23,7 +23,7 @@ class LoginController extends Controller
         $user->load('roles', 'permissions');
 
         return response()->json([
-            'user' => $user
+            'user' => $user,
         ]);
     }
 }

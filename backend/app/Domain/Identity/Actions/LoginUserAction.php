@@ -10,9 +10,8 @@ class LoginUserAction
     /**
      * Attempt to log in a user.
      *
-     * @param array $credentials
-     * @param bool $remember
      * @return \App\Domain\Identity\Models\User
+     *
      * @throws ValidationException
      */
     public function execute(array $credentials, bool $remember = false)

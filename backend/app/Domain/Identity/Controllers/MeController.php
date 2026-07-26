@@ -10,11 +10,11 @@ class MeController extends Controller
     public function __invoke(Request $request)
     {
         $user = $request->user();
-        
+
         $user->load('roles', 'permissions');
 
         return response()->json([
-            'user' => $user
+            'user' => $user,
         ]);
     }
 }

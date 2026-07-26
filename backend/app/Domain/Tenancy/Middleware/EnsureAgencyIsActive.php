@@ -2,17 +2,17 @@
 
 namespace App\Domain\Tenancy\Middleware;
 
+use App\Domain\Tenancy\Models\Agency;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Domain\Tenancy\Models\Agency;
 
 class EnsureAgencyIsActive
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param Closure(Request): (Response) $next
      */
     public function handle(Request $request, Closure $next): Response
     {

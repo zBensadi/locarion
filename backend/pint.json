@@ -25,7 +25,7 @@
         "logical_operators": true,
         "lowercase_cast": true,
         "method_argument_space": {
-            "on_multiline": "explode",
+            "on_multiline": "ensure_fully_multiline",
             "keep_multiple_spaces_after_comma": false
         },
         "multiline_whitespace_before_semicolons": {
@@ -183,11 +183,13 @@
             "space": "none"
         },
         "unary_operator_spaces": true,
-        "visibility_required": [
-            "property",
-            "method",
-            "const"
-        ],
+        "visibility_required": {
+            "elements": [
+                "property",
+                "method",
+                "const"
+            ]
+        },
         "whitespace_after_comma_in_array": {
             "ensure_single_space": true
         }

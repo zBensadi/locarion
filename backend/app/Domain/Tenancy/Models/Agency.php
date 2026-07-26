@@ -25,7 +25,7 @@ class Agency extends Model
     protected function casts(): array
     {
         return [
-            //
+
         ];
     }
 }

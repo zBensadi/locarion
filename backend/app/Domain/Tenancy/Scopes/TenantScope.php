@@ -22,6 +22,7 @@ class TenantScope implements Scope
         // This ensures a Super Admin doesn't accidentally query all agencies' records when they shouldn't.
         if (! $agencyId) {
             $builder->whereRaw('1 = 0');
+
             return;
         }
 

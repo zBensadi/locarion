@@ -13,15 +13,12 @@ class TenantServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(TenantContext::class, function ($app) {
-            return new TenantContext();
+            return new TenantContext;
         });
     }
 
     /**
      * Bootstrap services.
      */
-    public function boot(): void
-    {
-        //
-    }
+    public function boot(): void {}
 }
