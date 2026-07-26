@@ -1,0 +1,195 @@
+{
+    "preset": "laravel",
+    "rules": {
+        "align_multiline_comment": true,
+        "array_indentation": true,
+        "array_syntax": {
+            "syntax": "short"
+        },
+        "blank_line_after_namespace": true,
+        "blank_line_after_opening_tag": true,
+        "combine_consecutive_issets": true,
+        "combine_consecutive_unsets": true,
+        "concat_space": {
+            "spacing": "one"
+        },
+        "declare_parentheses": true,
+        "declare_strict_types": false,
+        "explicit_string_variable": true,
+        "fully_qualified_strict_types": true,
+        "global_namespace_import": {
+            "import_classes": true,
+            "import_constants": true,
+            "import_functions": true
+        },
+        "logical_operators": true,
+        "lowercase_cast": true,
+        "method_argument_space": {
+            "on_multiline": "explode",
+            "keep_multiple_spaces_after_comma": false
+        },
+        "multiline_whitespace_before_semicolons": {
+            "strategy": "no_multi_line"
+        },
+        "new_with_parentheses": {
+            "anonymous_class": false,
+            "named_class": false
+        },
+        "no_empty_comment": true,
+        "no_empty_phpdoc": true,
+        "no_empty_statement": true,
+        "no_extra_blank_lines": {
+            "tokens": [
+                "extra",
+                "throw",
+                "use"
+            ]
+        },
+        "no_leading_import_slash": true,
+        "no_leading_namespace_whitespace": true,
+        "no_mixed_echo_print": {
+            "use": "echo"
+        },
+        "no_multiline_whitespace_around_double_arrow": true,
+        "no_short_bool_cast": true,
+        "no_singleline_whitespace_before_semicolons": true,
+        "no_spaces_around_offset": true,
+        "no_superfluous_phpdoc_tags": {
+            "allow_mixed": true,
+            "allow_unused_params": true
+        },
+        "no_trailing_comma_in_singleline": true,
+        "no_unneeded_control_parentheses": true,
+        "no_unneeded_curly_braces": true,
+        "no_unneeded_import_alias": true,
+        "no_unused_imports": true,
+        "not_operator_with_successor_space": true,
+        "nullable_type_declaration_for_default_null_value": true,
+        "object_operator_without_whitespace": true,
+        "ordered_class_elements": {
+            "order": [
+                "use_trait",
+                "case",
+                "constant_public",
+                "constant_protected",
+                "constant_private",
+                "property_public",
+                "property_protected",
+                "property_private",
+                "construct",
+                "destruct",
+                "magic",
+                "phpunit",
+                "method_public",
+                "method_protected",
+                "method_private"
+            ]
+        },
+        "ordered_imports": {
+            "sort_algorithm": "alpha",
+            "imports_order": [
+                "const",
+                "class",
+                "function"
+            ]
+        },
+        "ordered_interfaces": true,
+        "ordered_traits": true,
+        "phpdoc_align": {
+            "align": "vertical"
+        },
+        "phpdoc_indent": true,
+        "phpdoc_inline_tag_normalizer": true,
+        "phpdoc_no_access": true,
+        "phpdoc_no_package": true,
+        "phpdoc_no_useless_inheritdoc": true,
+        "phpdoc_order": {
+            "order": [
+                "param",
+                "return",
+                "throws"
+            ]
+        },
+        "phpdoc_scalar": true,
+        "phpdoc_separation": {
+            "groups": [
+                [
+                    "deprecated",
+                    "link",
+                    "see",
+                    "since"
+                ],
+                [
+                    "author",
+                    "copyright",
+                    "license"
+                ],
+                [
+                    "category",
+                    "package",
+                    "subpackage"
+                ],
+                [
+                    "property",
+                    "property-read",
+                    "property-write"
+                ],
+                [
+                    "param",
+                    "return"
+                ]
+            ]
+        },
+        "phpdoc_single_line_var_spacing": true,
+        "phpdoc_summary": false,
+        "phpdoc_to_comment": false,
+        "phpdoc_trim": true,
+        "phpdoc_trim_consecutive_blank_line_separation": true,
+        "phpdoc_types": true,
+        "phpdoc_types_order": {
+            "null_adjustment": "always_last",
+            "sort_algorithm": "none"
+        },
+        "phpdoc_var_without_name": true,
+        "return_type_declaration": {
+            "space_before": "none"
+        },
+        "short_scalar_cast": true,
+        "single_blank_line_at_eof": true,
+        "single_class_element_per_statement": true,
+        "single_import_per_statement": true,
+        "single_line_after_imports": true,
+        "single_line_comment_style": {
+            "comment_types": [
+                "hash"
+            ]
+        },
+        "single_quote": true,
+        "space_after_semicolon": true,
+        "standardize_not_equals": true,
+        "statement_indentation": true,
+        "switch_case_semicolon_to_colon": true,
+        "switch_case_space": true,
+        "ternary_operator_spaces": true,
+        "ternary_to_null_coalescing": true,
+        "trailing_comma_in_multiline": {
+            "elements": [
+                "arrays"
+            ]
+        },
+        "trim_array_spaces": true,
+        "type_declaration_spaces": true,
+        "types_spaces": {
+            "space": "none"
+        },
+        "unary_operator_spaces": true,
+        "visibility_required": [
+            "property",
+            "method",
+            "const"
+        ],
+        "whitespace_after_comma_in_array": {
+            "ensure_single_space": true
+        }
+    }
+}

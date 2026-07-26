@@ -1,0 +1,17 @@
+node_modules
+/vendor
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.DS_Store
+*.log
+docker-compose.override.yml
+dist/
+build/
+coverage/
+.pnpm-debug.log
