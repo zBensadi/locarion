@@ -15,9 +15,7 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        $remember = $request->boolean('remember');
-
-        $user = $action->execute($credentials, $remember);
+        $user = $action->execute($credentials, $request);
 
         // Eager load roles/permissions so the SPA can render role-appropriate UI
         $user->load('roles', 'permissions');

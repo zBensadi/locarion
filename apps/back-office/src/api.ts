@@ -7,6 +7,7 @@ const api = axios.create({
     'Accept': 'application/json',
   },
   withCredentials: true, // Required for Sanctum cookie authentication
+  withXSRFToken: true,
 });
 
 // For API endpoints, we append /api/v1
@@ -17,6 +18,7 @@ export const apiClient = axios.create({
     'Accept': 'application/json',
   },
   withCredentials: true,
+  withXSRFToken: true,
 });
 
 export default api;

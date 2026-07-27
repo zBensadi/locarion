@@ -14,8 +14,9 @@ class LoginUserAction
      *
      * @throws ValidationException
      */
-    public function execute(array $credentials, bool $remember = false)
+    public function execute(array $credentials, \Illuminate\Http\Request $request)
     {
+        $remember = $request->boolean('remember');
         if (Auth::attempt($credentials, $remember)) {
             $user = Auth::user();
 
@@ -26,7 +27,7 @@ class LoginUserAction
                 ]);
             }
 
-            request()->session()->regenerate();
+            $request->session()->regenerate();
 
             return $user;
         }
