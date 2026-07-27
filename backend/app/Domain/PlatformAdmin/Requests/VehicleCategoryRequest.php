@@ -3,6 +3,7 @@
 namespace App\Domain\PlatformAdmin\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class VehicleCategoryRequest extends FormRequest
 {
@@ -15,9 +16,14 @@ class VehicleCategoryRequest extends FormRequest
     {
         $categoryId = $this->route('category') ? $this->route('category')->id : null;
 
+        $uniqueRule = Rule::unique('vehicle_categories', 'name');
+        if ($categoryId) {
+            $uniqueRule->ignore($categoryId);
+        }
+
         return [
-            'name' => 'required|string|max:255|unique:vehicle_categories,name,' . $categoryId,
-            'description' => 'nullable|string',
+            'name' => ['required', 'string', 'max:255', $uniqueRule],
+            'description' => ['nullable', 'string'],
         ];
     }
 }
