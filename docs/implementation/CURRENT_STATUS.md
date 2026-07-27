@@ -1,12 +1,20 @@
-# Current Implementation Status
+# Implementation Status
 
 **Project:** Locarion (Multi-Tenant SaaS Car Rental Platform)
 
 ## Overview
-- **Current Milestone:** M2 — Fleet & Public Search MVP (Analysis Phase)
-- **Completed Milestones:** M0 — Repository Foundation, M1 — Identity & Tenancy
-- **Next Milestone:** M3 — Operations & Billing MVP
-- **Overall Implementation Progress:** Identity & Tenancy laid (2/7 milestones completed).
+- **Current Milestone:** M3 (Reservation Engine & Pricing - Next)
+- **Completed Milestones:** M0, M1, M2
+- **Next Milestone:** M3 (Reservation Engine & Pricing)
+
+## Overall Implementation Progress
+
+- [x] **M0: Repository Foundation:** Monorepo setup, Docker environment, Laravel structure
+- [x] **M1: Identity & Tenancy:** Global `TenantScope`, Spatie Roles/Permissions, UUIDs, User/Agency models
+- [x] **M2: Fleet & Public Search MVP:** `VehicleCategory` and `Vehicle` models, Admin/BackOffice APIs, Public Search API
+- [ ] **M3: Reservation Engine & Pricing:** `Reservation` lifecycle, pricing calculation, availability checks
+- [ ] **M4: Core Customer Experience:** Public booking flow, Customer portal MVP
+- [ ] **M5: Invoicing & Payments MVP:** `Invoice` generation, `Payment` records, basic receipt generation
 
 ## Project Status
 The project repository has been initialized with the foundational structure:
@@ -14,7 +22,6 @@ The project repository has been initialized with the foundational structure:
 - Laravel 12 backend scaffolding created with domain-oriented directories prepared (`app/Domain`).
 - Docker Compose configuration for local development established (Nginx, App, DB).
 - Core tooling (ESLint, Prettier, PHPStan, Pint) and GitHub Actions CI workflow implemented.
-
-- Identity & Tenancy mechanisms (M1) are implemented (Sanctum authentication, Spatie roles/permissions, TenantScope isolation).
-
-We are now preparing to implement the M2 — Fleet & Public Search MVP.
+- Spatie Permissions configuration using UUID teams.
+- Factory resolutions have been mapped to support the domain structure natively.
+- Full test suite running and passing on CI with SQLite memory database.

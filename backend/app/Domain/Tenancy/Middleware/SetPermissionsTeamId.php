@@ -27,9 +27,9 @@ class SetPermissionsTeamId
 
             $tenantContext->setAgencyId($agencyId);
 
-            // Set Spatie permissions team to match
+            // Set Spatie permissions team to match (use dummy UUID for global super-admin if null)
             if (class_exists(\Spatie\Permission\PermissionRegistrar::class)) {
-                setPermissionsTeamId($agencyId);
+                setPermissionsTeamId($agencyId ?? '00000000-0000-0000-0000-000000000000');
             }
         }
 

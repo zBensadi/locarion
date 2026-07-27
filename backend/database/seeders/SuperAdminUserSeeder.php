@@ -18,8 +18,9 @@ class SuperAdminUserSeeder extends Seeder
             'is_active' => true,
         ]);
 
-        // Explicitly set team context to null for super-admin assignment
-        setPermissionsTeamId(null);
+        // Explicitly set team context to a dummy UUID for global super-admin assignment
+        // Since team_id is part of the composite primary key, it cannot be null.
+        setPermissionsTeamId('00000000-0000-0000-0000-000000000000');
         $superAdmin->assignRole('super-admin');
     }
 }
