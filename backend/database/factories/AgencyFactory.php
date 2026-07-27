@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Domain\Tenancy\Models\Agency;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 class AgencyFactory extends Factory
 {

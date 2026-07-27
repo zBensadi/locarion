@@ -4,8 +4,10 @@ use App\Domain\Identity\Controllers\LoginController;
 use App\Domain\Identity\Controllers\LogoutController;
 use App\Domain\Identity\Controllers\MeController;
 use App\Http\Controllers\Api\V1\Admin\VehicleCategoryController as AdminCategoryController;
+use App\Http\Controllers\Api\V1\BackOffice\ReservationController as BackOfficeReservationController;
 use App\Http\Controllers\Api\V1\BackOffice\VehicleCategoryController as BackOfficeCategoryController;
 use App\Http\Controllers\Api\V1\BackOffice\VehicleController as BackOfficeVehicleController;
+use App\Http\Controllers\Api\V1\Public\ReservationController as PublicReservationController;
 use App\Http\Controllers\Api\V1\Public\VehicleController as PublicVehicleController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +19,7 @@ Route::prefix('v1')->group(function () {
     Route::prefix('public')->group(function () {
         Route::get('/vehicles', [PublicVehicleController::class, 'index']);
         Route::get('/vehicles/{id}', [PublicVehicleController::class, 'show']);
+        Route::post('/reservations', [PublicReservationController::class, 'store']);
     });
 
     // Authenticated routes
@@ -33,6 +36,9 @@ Route::prefix('v1')->group(function () {
         Route::middleware(['agency.active'])->group(function () {
             Route::get('/categories', [BackOfficeCategoryController::class, 'index']);
             Route::apiResource('vehicles', BackOfficeVehicleController::class);
+
+            Route::apiResource('reservations', BackOfficeReservationController::class)->except(['update']);
+            Route::put('reservations/{reservation}/status', [BackOfficeReservationController::class, 'updateStatus']);
         });
     });
 });

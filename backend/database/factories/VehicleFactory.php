@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class VehicleFactory extends Factory
 {
     protected $model = Vehicle::class;
+
     /**
      * Define the model's default state.
      *

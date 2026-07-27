@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Domain\Fleet\Models\Reservation;
 use App\Domain\Fleet\Models\Vehicle;
+use App\Domain\Fleet\Policies\ReservationPolicy;
 use App\Domain\Fleet\Policies\VehiclePolicy;
 use App\Domain\PlatformAdmin\Models\VehicleCategory;
 use App\Domain\PlatformAdmin\Policies\VehicleCategoryPolicy;
@@ -31,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
 
         Gate::policy(VehicleCategory::class, VehicleCategoryPolicy::class);
         Gate::policy(Vehicle::class, VehiclePolicy::class);
+        Gate::policy(Reservation::class, ReservationPolicy::class);
 
         Factory::guessFactoryNamesUsing(function (string $modelName) {
             return 'Database\\Factories\\' . class_basename($modelName) . 'Factory';
