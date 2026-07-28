@@ -62,7 +62,7 @@ class GetDashboardDataAction
     private function getAgencyAdminData(?string $agencyId): array
     {
         // If they don't have an agency (shouldn't happen for agency-admin), return empty stats
-        if (!$agencyId) {
+        if (! $agencyId) {
             return ['role' => 'agency-admin', 'stats' => [], 'recent_reservations' => [], 'recent_vehicles' => [], 'attention_vehicles' => []];
         }
 

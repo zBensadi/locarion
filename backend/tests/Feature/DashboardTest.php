@@ -26,20 +26,20 @@ class DashboardTest extends TestCase
         $response = $this->actingAs($superAdmin)->getJson('/api/v1/dashboard');
 
         $response->assertStatus(200)
-                 ->assertJsonPath('role', 'super-admin');
+            ->assertJsonPath('role', 'super-admin');
     }
 
     public function test_agency_admin_can_access_dashboard()
     {
         $agency = Agency::factory()->create();
         $agencyAdmin = User::factory()->create(['agency_id' => $agency->id, 'is_active' => true]);
-        
+
         setPermissionsTeamId($agency->id);
         $agencyAdmin->assignRole('agency-admin');
 
         $response = $this->actingAs($agencyAdmin)->getJson('/api/v1/dashboard');
 
         $response->assertStatus(200)
-                 ->assertJsonPath('role', 'agency-admin');
+            ->assertJsonPath('role', 'agency-admin');
     }
 }

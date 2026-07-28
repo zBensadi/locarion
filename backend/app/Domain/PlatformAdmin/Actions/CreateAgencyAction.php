@@ -32,7 +32,7 @@ class CreateAgencyAction
             // Assign the agency-admin role within the agency's team context
             setPermissionsTeamId($agency->id);
             $adminUser->assignRole('agency-admin');
-            
+
             // Revert back to the global team context (or previous one) if needed
             // For now, since this is called in an API request that resolves and dies, it's fine.
             // But to be safe:

@@ -41,7 +41,7 @@ class DemoAgencySeeder extends Seeder
         for ($i = 1; $i <= 5; $i++) {
             $status = $i === 5 ? 'suspended' : 'active';
             $agency = Agency::create([
-                'name' => "Locarion Agency $i",
+                'name' => "Locarion Agency {$i}",
                 'slug' => 'agency-' . $i . '-' . Str::random(5),
                 'status' => $status,
             ]);
@@ -49,8 +49,8 @@ class DemoAgencySeeder extends Seeder
 
             // Create Agency Admin
             $agencyAdmin = User::create([
-                'name' => "Admin Agency $i",
-                'email' => "admin$i@locarion.com",
+                'name' => "Admin Agency {$i}",
+                'email' => "admin{$i}@locarion.com",
                 'password' => Hash::make('password'),
                 'agency_id' => $agency->id,
                 'is_active' => true,
@@ -61,7 +61,7 @@ class DemoAgencySeeder extends Seeder
             // Create 2 Employees
             for ($j = 1; $j <= 2; $j++) {
                 $employee = User::create([
-                    'name' => "Employee $j Agency $i",
+                    'name' => "Employee {$j} Agency {$i}",
                     'email' => "employee{$j}_{$i}@locarion.com",
                     'password' => Hash::make('password'),
                     'agency_id' => $agency->id,
@@ -121,7 +121,7 @@ class DemoAgencySeeder extends Seeder
 
         foreach ($reservationStatuses as $status) {
             $vehicle = $vehicles[array_rand($vehicles)];
-            
+
             // Adjust dates based on status
             if ($status === 'completed') {
                 $start = Carbon::now()->subDays(rand(10, 30));

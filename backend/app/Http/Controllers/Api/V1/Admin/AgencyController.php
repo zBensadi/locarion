@@ -27,7 +27,7 @@ class AgencyController extends Controller
 
         if ($search = $request->input('search')) {
             $query->where('name', 'like', "%{$search}%")
-                  ->orWhere('slug', 'like', "%{$search}%");
+                ->orWhere('slug', 'like', "%{$search}%");
         }
 
         $agencies = $query->latest()->paginate(15);
@@ -46,7 +46,7 @@ class AgencyController extends Controller
     public function store(AgencyRequest $request, CreateAgencyAction $action)
     {
         Gate::authorize('create', Agency::class);
-        
+
         $result = $action->execute($request->validated());
 
         return response()->json([
@@ -65,7 +65,7 @@ class AgencyController extends Controller
     public function update(AgencyRequest $request, Agency $agency)
     {
         Gate::authorize('update', $agency);
-        
+
         $agency->update($request->validated());
 
         return new AgencyResource($agency);
