@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
     // Auth routes
-    Route::post('/login', LoginController::class)->middleware('throttle:api-auth'); // We'll just use a basic throttle for now or the login specific one
+    Route::post('/login', LoginController::class)->middleware('throttle:api-auth');
 
     // Public routes
     Route::prefix('public')->group(function () {

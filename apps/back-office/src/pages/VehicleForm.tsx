@@ -31,7 +31,7 @@ const VehicleForm = () => {
           setFormData(prev => ({ ...prev, category_id: response.data.data[0].id }));
         }
       } catch (err) {
-        console.error('Failed to load categories', err);
+        setError('Failed to load categories');
       }
     };
     
@@ -73,7 +73,7 @@ const VehicleForm = () => {
     const payload = {
       ...formData,
       daily_rate: Math.round(parseFloat(formData.daily_rate) * 100), // convert to cents
-      year: parseInt(formData.year as any, 10),
+      year: parseInt(String(formData.year), 10),
     };
 
     try {
@@ -145,6 +145,7 @@ const VehicleForm = () => {
               <label className="form-label">Status</label>
               <select name="status" className="form-select" value={formData.status} onChange={handleChange} required>
                 <option value="available">Available</option>
+                <option value="reserved">Reserved</option>
                 <option value="maintenance">Maintenance</option>
                 <option value="retired">Retired</option>
               </select>

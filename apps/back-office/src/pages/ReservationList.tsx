@@ -15,13 +15,14 @@ interface Reservation {
 const ReservationList = () => {
   const [reservations, setReservations] = useState<Reservation[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   const fetchReservations = async () => {
     try {
       const response = await apiClient.get('/reservations');
       setReservations(response.data.data);
-    } catch (error) {
-      console.error('Failed to fetch reservations', error);
+    } catch (err) {
+      setError('Failed to fetch reservations. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -52,7 +53,13 @@ const ReservationList = () => {
                 </tr>
               </thead>
               <tbody>
-                {reservations.length === 0 ? (
+                {error ? (
+                  <tr>
+                    <td colSpan={6} style={{ textAlign: 'center', color: 'var(--danger-color)' }}>
+                      {error}
+                    </td>
+                  </tr>
+                ) : reservations.length === 0 ? (
                   <tr>
                     <td colSpan={6} style={{ textAlign: 'center', color: 'var(--text-muted)' }}>
                       No reservations found.

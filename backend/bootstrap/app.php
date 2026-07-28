@@ -19,5 +19,5 @@ return Application::configure(basePath: dirname(__DIR__))
             'user.active' => App\Domain\Identity\Middleware\EnsureUserIsActive::class,
             'agency.active' => App\Domain\Tenancy\Middleware\EnsureAgencyIsActive::class,
         ]);
-    })
-    ->withExceptions(function (Exceptions $exceptions): void {})->create();
+    })->withExceptions(function (Exceptions $exceptions): void {
+    })->create();

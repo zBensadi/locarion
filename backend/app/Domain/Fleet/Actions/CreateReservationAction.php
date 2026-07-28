@@ -21,12 +21,7 @@ class CreateReservationAction
         $start = Carbon::parse($data['start_date'])->startOfDay();
         $end = Carbon::parse($data['end_date'])->startOfDay();
 
-        // Minimum rental duration is 1 day. If start and end are same day, it's 1 day.
-        // If end is next day, it's 1 day... Wait, if start is 10th and end is 12th, diffInDays is 2.
-        // But usually rental is inclusive or exclusive. Let's say diffInDays + 1 for inclusive days,
-        // or just diffInDays if based on 24-hour periods.
-        // The business rule says: "minimum rental duration is 1 day. (end_date - start_date in days)".
-        // Let's use max(1, $start->diffInDays($end)).
+
         $days = (int) max(1, $start->diffInDays($end));
 
         if (! $this->checkAvailability->execute($vehicle->id, $start, $end)) {

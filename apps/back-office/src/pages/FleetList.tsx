@@ -17,13 +17,14 @@ interface Vehicle {
 const FleetList = () => {
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   const fetchVehicles = async () => {
     try {
       const response = await apiClient.get('/vehicles');
       setVehicles(response.data.data);
-    } catch (error) {
-      console.error('Failed to fetch vehicles', error);
+    } catch (err) {
+      setError('Failed to fetch vehicles. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -59,7 +60,13 @@ const FleetList = () => {
                 </tr>
               </thead>
               <tbody>
-                {vehicles.length === 0 ? (
+                {error ? (
+                  <tr>
+                    <td colSpan={6} style={{ textAlign: 'center', color: 'var(--danger-color)' }}>
+                      {error}
+                    </td>
+                  </tr>
+                ) : vehicles.length === 0 ? (
                   <tr>
                     <td colSpan={6} style={{ textAlign: 'center', color: 'var(--text-muted)' }}>
                       No vehicles found. Add your first vehicle to get started.
@@ -73,7 +80,11 @@ const FleetList = () => {
                       <td>{vehicle.license_plate}</td>
                       <td>${(vehicle.daily_rate / 100).toFixed(2)}</td>
                       <td>
-                        <span className={`badge ${vehicle.status === 'available' ? 'badge-confirmed' : 'badge-cancelled'}`}>
+                        <span className={`badge ${
+                          vehicle.status === 'available' ? 'badge-confirmed' :
+                          vehicle.status === 'reserved' ? 'badge-pending' :
+                          vehicle.status === 'maintenance' ? 'badge-rejected' : 'badge-cancelled'
+                        }`}>
                           {vehicle.status}
                         </span>
                       </td>
