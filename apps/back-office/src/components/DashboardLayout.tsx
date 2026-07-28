@@ -29,23 +29,38 @@ const DashboardLayout = () => {
             Dashboard
           </NavLink>
           
-          <NavLink 
-            to="/fleet" 
-            className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}
-            style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}
-          >
-            <Car size={20} />
-            Fleet Management
-          </NavLink>
+          {user?.agency_id && (
+            <>
+              <NavLink 
+                to="/fleet" 
+                className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}
+                style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}
+              >
+                <Car size={20} />
+                Fleet Management
+              </NavLink>
+              
+              <NavLink 
+                to="/reservations" 
+                className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}
+                style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}
+              >
+                <CalendarDays size={20} />
+                Reservations
+              </NavLink>
+            </>
+          )}
           
-          <NavLink 
-            to="/reservations" 
-            className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}
-            style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}
-          >
-            <CalendarDays size={20} />
-            Reservations
-          </NavLink>
+          {!user?.agency_id && (
+            <NavLink 
+              to="/admin/agencies" 
+              className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}
+              style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}
+            >
+              <LayoutDashboard size={20} />
+              Agencies
+            </NavLink>
+          )}
         </nav>
       </aside>
 

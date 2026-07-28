@@ -26,6 +26,6 @@ class SearchVehiclesAction
                 $query->where('agency_id', $agencyId);
             })
             ->latest()
-            ->paginate(15);
+            ->paginate(50);
     }
 }

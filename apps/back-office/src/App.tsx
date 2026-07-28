@@ -7,6 +7,8 @@ import FleetList from './pages/FleetList';
 import VehicleForm from './pages/VehicleForm';
 import ReservationList from './pages/ReservationList';
 import ReservationDetail from './pages/ReservationDetail';
+import AgenciesList from './pages/admin/AgenciesList';
+import AgencyForm from './pages/admin/AgencyForm';
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading } = useAuth();
@@ -14,6 +16,12 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   if (loading) return <div>Loading...</div>;
   if (!user) return <Navigate to="/login" replace />;
   
+  return <>{children}</>;
+};
+
+const SuperAdminRoute = ({ children }: { children: React.ReactNode }) => {
+  const { user } = useAuth();
+  if (user && user.agency_id !== null) return <Navigate to="/" replace />;
   return <>{children}</>;
 };
 
@@ -30,6 +38,11 @@ function AppRoutes() {
         
         <Route path="reservations" element={<ReservationList />} />
         <Route path="reservations/:id" element={<ReservationDetail />} />
+
+        {/* Super Admin Routes */}
+        <Route path="admin/agencies" element={<SuperAdminRoute><AgenciesList /></SuperAdminRoute>} />
+        <Route path="admin/agencies/new" element={<SuperAdminRoute><AgencyForm /></SuperAdminRoute>} />
+        <Route path="admin/agencies/:id/edit" element={<SuperAdminRoute><AgencyForm /></SuperAdminRoute>} />
       </Route>
     </Routes>
   );

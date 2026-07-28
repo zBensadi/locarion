@@ -26,10 +26,12 @@ Route::prefix('v1')->group(function () {
     Route::middleware(['auth:sanctum', 'user.active', 'tenant.team'])->group(function () {
         Route::post('/logout', LogoutController::class);
         Route::get('/me', MeController::class);
+        Route::get('/dashboard', \App\Http\Controllers\Api\V1\DashboardController::class);
 
         // Admin (Platform level)
         Route::prefix('admin')->group(function () {
             Route::apiResource('categories', AdminCategoryController::class);
+            Route::apiResource('agencies', \App\Http\Controllers\Api\V1\Admin\AgencyController::class)->except(['destroy']);
         });
 
         // Agency active check should be applied to routes that are not platform level
