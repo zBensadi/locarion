@@ -34,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(VehicleCategory::class, VehicleCategoryPolicy::class);
         Gate::policy(Vehicle::class, VehiclePolicy::class);
         Gate::policy(Reservation::class, ReservationPolicy::class);
+        Gate::policy(\App\Domain\Tenancy\Models\Agency::class, \App\Domain\PlatformAdmin\Policies\AgencyPolicy::class);
 
         Factory::guessFactoryNamesUsing(function (string $modelName) {
             return 'Database\\Factories\\' . class_basename($modelName) . 'Factory';

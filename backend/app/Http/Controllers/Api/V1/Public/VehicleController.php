@@ -26,7 +26,7 @@ class VehicleController extends Controller
         $vehicle = Vehicle::withoutGlobalScope(TenantScope::class)
             ->with(['category', 'agency'])
             ->whereHas('agency', function ($query) {
-                $query->where('is_active', true);
+                $query->where('status', 'active');
             })
             ->where('status', 'available')
             ->findOrFail($id);

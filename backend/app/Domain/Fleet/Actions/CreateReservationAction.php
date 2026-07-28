@@ -21,7 +21,6 @@ class CreateReservationAction
         $start = Carbon::parse($data['start_date'])->startOfDay();
         $end = Carbon::parse($data['end_date'])->startOfDay();
 
-
         $days = (int) max(1, $start->diffInDays($end));
 
         if (! $this->checkAvailability->execute($vehicle->id, $start, $end)) {
